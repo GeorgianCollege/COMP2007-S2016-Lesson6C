@@ -27,15 +27,22 @@ namespace COMP2007_S2016_Lesson6C
                 // check if a user is logged in
                 if(HttpContext.Current.User.Identity.IsAuthenticated)
                 {
+                    
                     // show the Contoso Content area
                     ContosoPlaceHolder.Visible = true;
                     PublicPlaceHolder.Visible = false;
+
+                    if(HttpContext.Current.User.Identity.GetUserName() == "admin")
+                    {
+                        UserPlaceHolder.Visible = true;
+                    }
                 }
                 else
                 {
                     // only show login and register
                     ContosoPlaceHolder.Visible = false;
                     PublicPlaceHolder.Visible = true;
+                    UserPlaceHolder.Visible = false;
                 }
                 SetActivePage();
             }
@@ -77,6 +84,9 @@ namespace COMP2007_S2016_Lesson6C
                     break;
                 case "Register":
                     register.Attributes.Add("class", "active");
+                    break;
+                case "Users":
+                    users.Attributes.Add("class", "active");
                     break;
             }
         }

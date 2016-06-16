@@ -28,6 +28,7 @@ namespace COMP2007_S2016_Lesson6C
             // search for and create a new user object
             var user = userManager.Find(UserNameTextBox.Text, PasswordTextBox.Text);
 
+
             // if a match is found for the user
             if(user != null)
             {
